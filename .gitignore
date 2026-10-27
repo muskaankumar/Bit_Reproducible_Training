@@ -1,0 +1,6 @@
+# Build outputs and test results
+build/
+results/
+*.o
+*.a
+.DS_Store
