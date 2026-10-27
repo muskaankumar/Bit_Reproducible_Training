@@ -82,3 +82,94 @@ avoid order-dependent partial-sum rounding across the batch.
 Ran `train_mnist.py --epochs 10 --seed 42` **twice** on the same A100 (NYU
 HPC, `c12m85-a100-1` partition, CUDA 12.6), and diffed the per-epoch SHA-256
 hashes of all parameters and optimizer state:
+**Result: PASS.** `diff` produced no output — every epoch's parameter hash
+and optimizer-state hash matched exactly between the two runs, confirming
+bit-identical training across repeated runs on the same GPU.
+
+Not yet run: the stronger cross-GPU version of this check (e.g. A100 vs.
+L4), which would confirm reproducibility across GPU architectures rather
+than just across repeated runs on the same one.
+
+### 2.2 Timing comparison vs. RepDL
+
+**Setup:** Both pipelines trained the identical LeNet-5 architecture
+(`Conv2d(1,6,5,pad=2) → ReLU → MaxPool → Conv2d(6,16,5) → ReLU → MaxPool →
+FC(400,120) → ReLU → FC(120,84) → ReLU → FC(84,10)`) on MNIST, batch size
+100, 10 epochs, Adam optimizer (lr adjusted to match: 0.001), on the same
+NYU HPC A100 node, same CUDA 12.6 container.
+
+**Result:**
+
+| | Avg epoch time |
+|---|---|
+| RepDL (`examples/mnist_trainig.py`, patched for matching hyperparameters) | **9.04 s/epoch** |
+| This pipeline (`train_mnist.py`) | **30.97 s/epoch** |
+
+**Speedup: 0.29× — i.e. this pipeline is currently ~3.4× *slower* than RepDL,
+not faster.** The original hypothesis (integer-GEMM split-K parallelism
+should beat RepDL's sequential-chain GEMM) was not borne out by this
+end-to-end measurement.
+
+---
+
+## 3. Why the expected speedup didn't show up (diagnosis)
+
+The algorithmic argument — that integer addition's associativity permits
+splitting a dot product across many threads/kernels, which a literal
+sequential FMA chain cannot do — is still correct at the level of a single
+large GEMM (this is exactly what Experiment 1 in the top-level project
+README measured directly: `repro_gemm` **is** faster than cuBLAS FP32 on
+large square matrices, and bit-reproducible). The slowdown shows up at the
+**training pipeline level**, for reasons that are about implementation, not
+the underlying math:
+
+1. **Per-image Python loop in `ReproConv2dFn`.** The current
+   implementation (`repro_nn.py`) loops `for b in range(B): ...`, launching a
+   separate `im2col` + `repro_gemm` call *per image* in the batch. With batch
+   size 100, that's 100 small GEMM calls per conv layer, each paying
+   kernel-launch overhead and the quantization-kernel fixed cost, instead of
+   one batched GEMM. RepDL's `from_torch_module` presumably handles the batch
+   dimension without this per-sample Python-level loop.
+
+2. **GEMM shapes are small relative to per-call overhead.** LeNet is tiny:
+   `repro_gemm`'s quantization, scale-exponent, and digit-splitting kernels
+   have a largely fixed per-call cost that only pays for itself at larger M,
+   N, K. For a 100-sample MNIST batch through a 6-, then 16-channel conv and
+   three small FC layers, the relative overhead per call is much higher than
+   in the 1024³/4096³ GEMMs the base `repro_gemm_cuda` benchmarks were run
+   at.
+
+3. **Workspace/plan recomputation.** `make_plan` and the workspace lookup run
+   on every call; for 100 tiny per-image calls per layer per batch, this adds
+   up as pure overhead that a single batched call would pay once.
+
+### Proposed fix (not yet implemented/tested)
+
+Batch the `im2col` across the whole batch dimension so each conv layer does
+**one** GEMM shaped `[Cout, Cin·kH·kW] @ [Cin·kH·kW, B·outH·outW]` instead of
+`B` separate `[Cout, Cin·kH·kW] @ [Cin·kH·kW, outH·outW]` calls, then reshape
+back. This should let a single, larger `repro_gemm` call amortize the
+per-call overhead and let split-K parallelism actually engage — matching the
+conditions under which the base GEMM benchmarks showed their improvement.
+This fix has not yet been implemented or re-benchmarked.
+
+---
+
+## 4. Honest status
+
+- ✅ Bit-reproducibility mechanism is implemented for every relevant op
+  (GEMM, conv, cross-entropy, Adam) as described in Section 1.
+- ✅ Same-GPU repeat-run hash match: **PASS** — see Section 2.1.
+- ❌ Cross-GPU hash match (e.g. A100 vs L4): not yet run.
+- ❌ Speedup over RepDL: **not achieved** in the current implementation — see
+  Section 2.2/3 for the measured 3.4× slowdown and diagnosis.
+
+## 5. Files
+
+| File | Purpose |
+|------|---------|
+| `repro_gemm_ext.cu` | PyTorch C++ extension wrapping `repro_gemm`; reproducible element-wise ops (exp/log/sqrt/tanh/div, softmax, cross-entropy); im2col/col2im |
+| `repro_nn.py` | `ReproLinear`, `ReproConv2d` (currently per-image loop — see Section 3), `ReproCrossEntropyLoss`, `ReproAdam` |
+| `train_mnist.py` | Training script with per-epoch SHA-256 parameter/optimizer hashing |
+| `run_repro_mnist.sh` | Convenience script: run twice, diff hashes |
+| `setup.py` | Build script for the CUDA extension |
