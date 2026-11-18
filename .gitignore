@@ -4,3 +4,4 @@ results/
 *.o
 *.a
 .DS_Store
+/gpt2_repro/data/wikitext103_tokens.bin

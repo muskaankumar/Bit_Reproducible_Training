@@ -1,0 +1,30 @@
+=== Setting up reproducible training environment ===
+Host: b-10-111, Date: Tue Nov 17 19:25:48 UTC 2026
+ERROR: Cannot find Singularity image. Available images:
+/share/apps/images/centos-7.9.2009.sif
+/share/apps/images/centos-8.2.2004.sif
+/share/apps/images/centos-8.4.2105.sif
+/share/apps/images/cuda-12.9.1-cudnn-9.10.2-ubuntu-24.04.2.sif
+/share/apps/images/cuda11.0-cudnn8-devel-ubuntu18.04.sif
+/share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif
+/share/apps/images/cuda11.1.1-cudnn8-devel-ubuntu20.04.sif
+/share/apps/images/cuda11.2.2-cudnn8-devel-ubuntu20.04.sif
+/share/apps/images/cuda11.3.0-cudnn8-devel-ubuntu20.04.sif
+/share/apps/images/cuda11.4.2-cudnn8.2.4-devel-ubuntu20.04.3.sif
+/share/apps/images/cuda11.6.124-cudnn8.4.0.27-devel-ubuntu20.04.4.sif
+/share/apps/images/cuda11.7.99-cudnn8.5-devel-ubuntu22.04.2.sif
+/share/apps/images/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif
+/share/apps/images/cuda12.1.1-cudnn8.9.0-devel-ubuntu22.04.2.sif
+/share/apps/images/cuda12.2.2-cudnn8.9.4-devel-ubuntu22.04.3.sif
+/share/apps/images/cuda12.6.2-cudnn9.5.0-devel-ubuntu24.04.1.sif
+/share/apps/images/cuda12.6.3-cudnn9.5.1-ubuntu22.04.5.sif
+/share/apps/images/cuda13.0.1-cudnn9.13.0-ubuntu-24.04.3.sif
+/share/apps/images/flexlm-centos8.4.2105.sif
+/share/apps/images/rockylinux-8.7.sif
+/share/apps/images/rockylinux-8.8.sif
+/share/apps/images/rockylinux-9.3.sif
+/share/apps/images/ubuntu-20.04.1.sif
+/share/apps/images/ubuntu-20.04.3.sif
+/share/apps/images/ubuntu-20.04.4.sif
+/share/apps/images/ubuntu-22.04.1.sif
+/share/apps/images/ubuntu-22.04.sif
