@@ -1,0 +1,155 @@
+mode=repro device=cuda gpu=NVIDIA A100-SXM4-40GB torch=2.14.1+cu126 cuda=12.6 driver=610.43.02
+seed=42 slices=3 batch=4 block=256 lr=0.0003 steps=1000
+hash init 79afb89eed3fa1d4dee1a76cda76b2b8b984c25dc9f470c3e522e9a1691d9499
+parameters 123,849,984
+  step    10 loss 8.6318 (bits 410a1baa) 89.3 ms
+  step    20 loss 8.0815 (bits 41014dcd) 89.3 ms
+  step    30 loss 7.8260 (bits 40fa6e85) 89.5 ms
+  step    40 loss 7.6175 (bits 40f3c27a) 89.5 ms
+  step    50 loss 7.8955 (bits 40fca804) 89.6 ms
+  step    60 loss 7.9936 (bits 40ffcb8c) 89.4 ms
+  step    70 loss 7.7715 (bits 40f8b03c) 90.1 ms
+  step    80 loss 7.5528 (bits 40f1b0cc) 89.4 ms
+  step    90 loss 7.6085 (bits 40f378ec) 89.6 ms
+  step   100 loss 7.6701 (bits 40f571d6) 89.5 ms
+  eval step 100: val_loss=7.6084 ppl=2015.0 hash=ddc95122da09e2f57b5575b6218fbabc5495546920fef5c08f3c6ba217150dce
+  step   110 loss 7.9106 (bits 40fd23f7) 89.3 ms
+  step   120 loss 8.0016 (bits 410006be) 89.6 ms
+  step   130 loss 7.6989 (bits 40f65d1d) 91.1 ms
+  step   140 loss 7.6657 (bits 40f54d81) 89.5 ms
+  step   150 loss 7.6313 (bits 40f433b8) 89.6 ms
+  step   160 loss 7.8960 (bits 40fcac19) 89.7 ms
+  step   170 loss 7.3984 (bits 40ecc005) 89.3 ms
+  step   180 loss 7.5631 (bits 40f204a5) 90.1 ms
+  step   190 loss 7.8128 (bits 40fa023f) 89.3 ms
+  step   200 loss 7.5746 (bits 40f262df) 89.4 ms
+  eval step 200: val_loss=7.5502 ppl=1901.2 hash=35787e41bf1e022e5ba0ed452d7743df54d3b20eff49db6bcb2c1f3277943373
+  step   210 loss 7.6722 (bits 40f58283) 91.4 ms
+  step   220 loss 7.4547 (bits 40ee8cb5) 89.3 ms
+  step   230 loss 7.1929 (bits 40e62c3b) 89.2 ms
+  step   240 loss 7.8109 (bits 40f9f2ff) 89.6 ms
+  step   250 loss 7.5170 (bits 40f08b0a) 89.4 ms
+  step   260 loss 7.7684 (bits 40f8968f) 89.2 ms
+  step   270 loss 7.5992 (bits 40f32c3d) 90.0 ms
+  step   280 loss 7.7836 (bits 40f91327) 89.6 ms
+  step   290 loss 7.5626 (bits 40f2012b) 89.6 ms
+  step   300 loss 7.4418 (bits 40ee231e) 89.7 ms
+  eval step 300: val_loss=7.5262 ppl=1856.1 hash=f0f32b8dd5644c78afc6312c2bb080c1f0a6f5ba080e74d68659a955824c7563
+  step   310 loss 7.4091 (bits 40ed179d) 89.4 ms
+  step   320 loss 7.7115 (bits 40f6c4b2) 92.3 ms
+  step   330 loss 7.7190 (bits 40f7023a) 89.9 ms
+  step   340 loss 7.3887 (bits 40ec7035) 89.5 ms
+  step   350 loss 7.6736 (bits 40f58ddd) 89.6 ms
+  step   360 loss 7.4679 (bits 40eef95c) 89.4 ms
+  step   370 loss 7.4357 (bits 40edf174) 89.3 ms
+  step   380 loss 7.2982 (bits 40e98a8f) 89.4 ms
+  step   390 loss 7.2754 (bits 40e8d05f) 89.2 ms
+  step   400 loss 7.2265 (bits 40e73f97) 89.2 ms
+  eval step 400: val_loss=7.4339 ppl=1692.5 hash=d2d2cafaf725c2a8ea730ee722565928609a0d785c9557b72c6458486b3fc9b3
+  step   410 loss 7.4023 (bits 40ecdf5c) 89.7 ms
+  step   420 loss 7.2924 (bits 40e95b40) 89.4 ms
+  step   430 loss 7.7239 (bits 40f729e1) 89.3 ms
+  step   440 loss 7.6987 (bits 40f65bdf) 89.6 ms
+  step   450 loss 7.7415 (bits 40f7ba1b) 89.8 ms
+  step   460 loss 6.8441 (bits 40db032c) 89.3 ms
+  step   470 loss 7.2817 (bits 40e903c2) 89.4 ms
+  step   480 loss 7.2489 (bits 40e7f6fc) 89.7 ms
+  step   490 loss 7.6058 (bits 40f36273) 89.7 ms
+  step   500 loss 7.5442 (bits 40f169b1) 89.7 ms
+  eval step 500: val_loss=7.3681 ppl=1584.6 hash=b9febfa9c3dac159474066003ede56a6c46cd0f3c50280ffff304652c570db60
+  step   510 loss 7.2670 (bits 40e88b13) 89.6 ms
+  step   520 loss 7.2480 (bits 40e7ef93) 89.4 ms
+  step   530 loss 7.5290 (bits 40f0ed51) 89.5 ms
+  step   540 loss 7.4201 (bits 40ed7151) 89.3 ms
+  step   550 loss 7.4818 (bits 40ef6a98) 89.5 ms
+  step   560 loss 7.1877 (bits 40e60165) 89.4 ms
+  step   570 loss 7.5612 (bits 40f1f529) 89.5 ms
+  step   580 loss 7.5084 (bits 40f04474) 89.8 ms
+  step   590 loss 8.0121 (bits 410031af) 89.8 ms
+  step   600 loss 7.3850 (bits 40ec5207) 89.7 ms
+  eval step 600: val_loss=7.4697 ppl=1754.0 hash=680c0fd8d66fb7bffd066d73a021566374a5a28062a4605645f1832ac8837568
+  step   610 loss 7.5967 (bits 40f317d1) 89.3 ms
+  step   620 loss 7.1397 (bits 40e478a4) 89.3 ms
+  step   630 loss 7.3619 (bits 40eb94f3) 89.5 ms
+  step   640 loss 7.5815 (bits 40f29bd7) 89.6 ms
+  step   650 loss 7.4680 (bits 40eefa34) 89.3 ms
+  step   660 loss 7.5796 (bits 40f28bb1) 89.4 ms
+  step   670 loss 7.5256 (bits 40f0d219) 89.6 ms
+  step   680 loss 7.4634 (bits 40eed3f2) 89.9 ms
+  step   690 loss 7.5331 (bits 40f10f2e) 89.5 ms
+  step   700 loss 7.8333 (bits 40faa9fe) 89.9 ms
+  eval step 700: val_loss=7.5790 ppl=1956.6 hash=b7e396a15fc8a36ef4234494a25a0787da7223e86bc84fa30e5726ee8551162b
+  step   710 loss 7.8135 (bits 40fa0847) 89.2 ms
+  step   720 loss 7.3512 (bits 40eb3d52) 89.5 ms
+  step   730 loss 7.5718 (bits 40f24c32) 89.4 ms
+  step   740 loss 8.0713 (bits 4101241c) 89.8 ms
+  step   750 loss 7.4429 (bits 40ee2c68) 89.5 ms
+  step   760 loss 7.5863 (bits 40f2c34e) 89.6 ms
+  step   770 loss 7.5516 (bits 40f1a6c4) 89.3 ms
+  step   780 loss 7.5078 (bits 40f0403a) 89.6 ms
+  step   790 loss 7.7273 (bits 40f74645) 89.4 ms
+  step   800 loss 7.5687 (bits 40f23267) 89.3 ms
+  eval step 800: val_loss=7.5490 ppl=1898.8 hash=00e9caec5e8fa9552565aabd8c8c1e43878962f117ad16aab5677665ff4b93a9
+  step   810 loss 7.5562 (bits 40f1cc87) 91.8 ms
+  step   820 loss 7.6004 (bits 40f336aa) 89.4 ms
+  step   830 loss 7.6618 (bits 40f52d6e) 90.1 ms
+  step   840 loss 7.5477 (bits 40f186c2) 89.6 ms
+  step   850 loss 7.6216 (bits 40f3e40e) 89.4 ms
+  step   860 loss 7.4665 (bits 40eeed9e) 89.4 ms
+  step   870 loss 8.0945 (bits 4101830a) 89.5 ms
+  step   880 loss 8.2425 (bits 4103e134) 89.8 ms
+  step   890 loss 7.4907 (bits 40efb3d2) 89.5 ms
+  step   900 loss 7.6467 (bits 40f4b20c) 89.4 ms
+  eval step 900: val_loss=7.5195 ppl=1843.6 hash=4619c52bb9e0cf860266a135ddf67e5709050ab008387c04dbad915977218c08
+  step   910 loss 7.6713 (bits 40f57b51) 89.6 ms
+  step   920 loss 7.5333 (bits 40f1110e) 89.4 ms
+  step   930 loss 7.6418 (bits 40f48991) 89.5 ms
+  step   940 loss 7.8323 (bits 40faa249) 89.4 ms
+  step   950 loss 7.5690 (bits 40f2355a) 89.2 ms
+  step   960 loss 7.2346 (bits 40e78218) 89.4 ms
+  step   970 loss 7.6888 (bits 40f60a6d) 89.5 ms
+  step   980 loss 7.6612 (bits 40f52844) 89.6 ms
+  step   990 loss 7.5101 (bits 40f0531d) 89.4 ms
+  step  1000 loss 7.7255 (bits 40f73767) 89.8 ms
+  eval step 1000: val_loss=7.6668 ppl=2136.1 hash=39352f45f31e0b321e03ad83938c72d318c28969db5c4f20847f58de35168fae
+hash final 39352f45f31e0b321e03ad83938c72d318c28969db5c4f20847f58de35168fae
+time total 90.6s; per step median 89.5ms mean 89.5ms (1000 steps)
+peak GPU memory 3848 MiB
+
+=== MEMORY PROFILE ===
+|===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2563 MiB |   3847 MiB |   6670 GiB |   6668 GiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2563 MiB |   3847 MiB |   6670 GiB |   6668 GiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2542 MiB |   3809 MiB |   6598 GiB |   6596 GiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   4470 MiB |   4470 MiB |   4470 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Non-releasable memory | 262584 KiB | 717171 KiB |   3756 GiB |   3756 GiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     604    |     810    |    1151 K  |    1151 K  |
+|---------------------------------------------------------------------------|
+| Active allocs         |     604    |     810    |    1151 K  |    1151 K  |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |     150    |     150    |     150    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      77    |     127    |  598965    |  598888    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+  Peak allocated:  3848 MiB
+  Reserved (pool): 4470 MiB
+  Parameters:      472.5 MiB
+  Gradients:       472.5 MiB
+  Optimizer (est): 944.9 MiB
+  Activations+tmp: 1957.9 MiB (est)

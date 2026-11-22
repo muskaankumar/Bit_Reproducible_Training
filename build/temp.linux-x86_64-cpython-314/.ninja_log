@@ -1,0 +1,7 @@
+# ninja log v7
+15	1352	1795376606723990474	/home/mk10608/gpt2_repro_project/build/temp.linux-x86_64-cpython-314/repro_gelu/repro_gelu.o	eaad9a99df775e5a
+11	1454	1795376606719957170	/home/mk10608/gpt2_repro_project/build/temp.linux-x86_64-cpython-314/repro_dropout/repro_dropout.o	fd52db69d5da9f98
+8	1598	1795376606717382056	/home/mk10608/gpt2_repro_project/build/temp.linux-x86_64-cpython-314/repro_attention/repro_attention.o	da31a6c818e37f5c
+13	1830	1795376606722132858	/home/mk10608/gpt2_repro_project/build/temp.linux-x86_64-cpython-314/repro_embedding/repro_embedding.o	5865f6aeeb9b070
+17	1975	1795376606725801542	/home/mk10608/gpt2_repro_project/build/temp.linux-x86_64-cpython-314/repro_layernorm/repro_layernorm.o	fd1d66b5d559365a
+5	66422	1795376606714857096	/home/mk10608/gpt2_repro_project/build/temp.linux-x86_64-cpython-314/bindings.o	accef5ba28513932

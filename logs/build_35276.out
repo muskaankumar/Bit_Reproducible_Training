@@ -1,0 +1,2 @@
+Building for GPU: NVIDIA_A100-SXM4-40GB on b-19-37
+ARCH=sm_80 BUILD_DIR=/scratch/mk10608/repro_training/builds/sm_80
